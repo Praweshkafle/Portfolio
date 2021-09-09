@@ -1,0 +1,67 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+@{
+    var url = ViewData["returnUrl"] as string;
+    var temdata = ViewData["Error"] as string;
+    Layout = null;
+}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link href="~/css/login.css" rel="stylesheet" />
+</head>
+<body>
+    @if (!string.IsNullOrWhiteSpace(temdata))
+    {
+        <h2 class="alert-danger" style="padding:10px">@temdata</h2>
+    }
+    @*<div class="row">
+            <div class="col-md-4">
+                <form action="/usermanagement/admin/logging?ReturnUrl=@System.Net.WebUtility.UrlEncode(url)" method="post">
+                    <div class="form-group">
+                        UserName:
+                        <input type="text" name="Username" class="form-control" />
+                    </div>
+                    <div class="form-group">
+                        Password:
+                        <input type="password" name="password" class="form-control" />
+                    </div>
+
+                    <div class="form-group">
+                        <input type="submit" value="Login" class="btn btn-primary" />
+                    </div>
+                </form>
+            </div>
+        </div>*@
+
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6">
+                <div class="card">
+                    <form class="box" action="/usermanagement/admin/logging?ReturnUrl=@System.Net.WebUtility.UrlEncode(url)" method="post">
+                        <h1 style="text-align: center; color: white;">
+                            Login
+                        </h1>
+                        <p class="text-muted" style="color: white;"> Please enter your login and password!</p>
+                        <input type="text" name="Username" placeholder="Username">
+                        <input type="password" name="password" placeholder="Password">
+                        @*<a class="forgot text-muted" href="#">Forgot password?</a>*@
+                        <input type="submit" name="" value="Login">
+                        <div class="col-md-12">
+                            <ul class="social-network social-circle">
+                                <li><a href="#" class="icoFacebook" title="Facebook"><i class="fab fa-facebook-f"></i></a></li>
+                                <li><a href="#" class="icoTwitter" title="Twitter"><i class="fab fa-twitter"></i></a></li>
+                                <li><a href="#" class="icoGoogle" title="Google +"><i class="fab fa-google-plus"></i></a></li>
+                            </ul>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>

@@ -1,0 +1,61 @@
+﻿@model MyWorkViewModel
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                Image
+            </th>
+            <th>
+                Title
+            </th>
+            <th>
+                Description
+            </th>
+
+            <th>
+                Created Date
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.workDetails)
+        {
+            string imgSrc = "/Images/myself.jpg";
+            if (item.Image != null)
+            {
+                imgSrc = "/Images/Custom/" + item.Image;
+            }
+        <tr>
+            <td>
+                <img src="@imgSrc"
+                     height="40" width="40" />
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Title)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Description)
+            </td>
+
+            <td>
+                @Html.DisplayFor(modelItem => item.CreatedDate)
+            </td>
+            <td>
+                <a href="/cms/mywork/edit/@item.Id">Edit</a> |
+                <a href="/cms/mywork/delete/@item.Id" class="delete">Delete</a>
+            </td>
+        </tr>
+        }
+    </tbody>
+</table>
